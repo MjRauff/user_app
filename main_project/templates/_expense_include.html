@@ -1,0 +1,83 @@
+<!-- expense_housing -->
+
+<thead>
+  <tr>
+    <th scope="col">Housing</th>
+    {% if expense_housing_total == None %}
+    <th scope="col">£0</th>
+    {% else %}
+    <th scope="col">£{{expense_housing_total}}</th>
+    {% endif %}
+  </tr>
+</thead>
+<tbody>
+  {% for e in expense_housing %}
+  <tr class="table-cell text-dark">
+    <td>{{e.title}}</td>
+    <td>£{{e.amount}}</td>
+  </tr>
+  {% endfor %}
+</tbody>
+
+<!-- expense_bills -->
+
+<thead>
+  <tr>
+    <th scope="col">Bills</th>
+    {% if expense_bills_total == None %}
+    <th scope="col">£0</th>
+    {% else %}
+    <th scope="col">£{{expense_bills_total}}</th>
+    {% endif %}
+  </tr>
+</thead>
+<tbody>
+  {% for e in expense_bills %}
+  <tr class="table-cell text-dark">
+    <td>{{e.title}}</td>
+    <td>£{{e.amount}}</td>
+  </tr>
+  {% endfor %}
+</tbody>
+
+<!-- expense_debt -->
+
+<thead>
+  <tr>
+    <th scope="col">Debt</th>
+    {% if expense_debt_total == None %}
+    <th scope="col">£0</th>
+    {% else %}
+    <th scope="col">£{{expense_debt_total}}</th>
+    {% endif %}
+  </tr>
+</thead>
+<tbody>
+  {% for e in expense_debt %}
+  <tr class="table-cell text-dark">
+    <td>{{e.title}}</td>
+    <td>£{{e.amount}}</td>
+  </tr>
+  {% endfor %}
+</tbody>
+
+<!-- expense_Subscriptions -->
+
+<thead>
+  <tr>
+    <th scope="col">Subscriptions</th>
+    {% if expense_subscriptions_total == None %}
+    <th scope="col">£0</th>
+    {% else %}
+    <th scope="col">£{{expense_subscriptions_total}}</th>
+    {% endif %}
+  </tr>
+</thead>
+<tbody>
+  {% for e in expense_subscriptions %}
+  <tr class="table-cell text-dark">
+    <td>{{e.title}}</td>
+    <td>£{{e.amount}}</td>
+  </tr>
+  {% endfor %}
+</tbody>

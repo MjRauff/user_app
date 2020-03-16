@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block contant %}
+{% if user.is_authenticated %}
+
+<div class="container mt-5">
+  <table class="table bg-primary text-white shadow p-3 mb-5 rounded">
+    {% include "_income_include.html" %}
+    {% include "_expense_include.html" %}
+  </table>
+<!-- Summary -->
+<div class="table-cell d-flex justify-content-around shadow p-3 mb-5 rounded">
+  <div id="charts" class="">
+    {% include "_charts.html" %}
+  </div>
+  {% include "_summary.html" %}
+</div>
+</div>
+{% else %}
+  <h1>You need to <a href="{% url 'accounts:login' %}">login!</a></h1>
+{% endif %}
+{% endblock %}
