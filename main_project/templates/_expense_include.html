@@ -1,0 +1,24 @@
+<!-- expense_housing -->
+{% for category in categoies %}
+<thead>
+  <tr>
+    <th scope="col">
+      <div class="">
+        {{category.category}}
+        <strong><a class="text-white" href="{% url 'expense:create' pk=category.pk %}">+</a></strong>
+      </div>
+    </th>
+    <th scope="col">£{{category.amount_total}}</th>
+  </tr>
+</thead>
+<tbody>
+  {% for expense in expenses %}
+    {% if expense.category == category %}
+      <tr class="table-cell text-dark">
+        <td>{{expense.title}}</td>
+        <td>£{{expense.amount}}</td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+</tbody>
+{% endfor %}

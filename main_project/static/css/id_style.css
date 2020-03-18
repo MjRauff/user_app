@@ -1,0 +1,46 @@
+/* Table color */
+
+.table-cell{
+  background-color:#ebeced; 
+}
+
+/* Summary */
+
+#summary{
+  width:40%;
+  float:right;
+  text-align:right;
+  /* background-color:#484e4f; */
+}
+
+#summary_in{
+  padding: 10px 20px 10px 20px;
+}
+
+#sum{
+  margin: 15px 0px;
+  padding: 10px 0px;
+  border-top: 1px solid rgba(41, 43, 44, 1);
+  border-bottom: 1px solid rgba(41, 43, 44, 1);
+}
+
+/* LOGIN */
+
+#login{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40%;
+  margin-bottom: 40%;
+}
+#signup{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30%;
+  margin-bottom: 30%;
+}
+
+#charts{
+  width:100%;
+}
