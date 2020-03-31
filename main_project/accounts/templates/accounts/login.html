@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+
+{% block contant %}
+<div id="login">
+  <div class="jumbotron bg-dark text-light shadow">
+    <div class="container">
+      <h1>Login</h1>
+      <form method="POST" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <p>If you don't have an account you need to <a href="{% url 'accounts:signup' %}">sign up!</a></p>
+        {% buttons %}
+          <button type="submit" class="btn btn-primary"><span class="fas fa-sign-in-alt mr-2"></span>Login</button>
+        {% endbuttons %}
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

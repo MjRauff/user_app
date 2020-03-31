@@ -1,0 +1,47 @@
+<!-- expense_housing -->
+{% for category in categoies_flex %}
+<thead>
+  <tr>
+    <th scope="col">
+      <div class="">
+        {{category.category}}
+        <a class="text-white" href="{% url 'expense:create_flex' pk=category.pk %}"><span class="fas fa-plus-square ml-1"></span></a>
+      </div>
+    </th>
+    {% if category.amount_total <= category.budget_total %}
+    <th class=""><div>£{{category.amount_total}}</div></th>
+    {% else %}
+    <th class="text-danger" scope="col"><div>£{{category.amount_total}}</div></th>
+    {% endif %}
+    <th>£{{category.budget_total}}</th>
+    <th>Inputs</th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  {% for expense in expenses_flex %}
+    {% if expense.category == category %}
+      <tr class="table-cell text-dark">
+        <td>
+          <a class="text-primary" href="{% url 'expense:sub' pk=expense.pk %}">{{expense.title}}</a>
+        </td>
+        {% if expense.amount_total <= expense.budget %}
+        <td>£{{expense.amount_total}}</td>
+        <td>£{{expense.budget}}</td>
+        <td>{{expense.sub_count}}</td>
+        {% else %}
+        <td class="text-danger">£{{expense.amount_total}}</td>
+        <td>£{{expense.budget}}</td>
+        <td>{{expense.sub_count}}</td>
+        {% endif %}
+        <td>
+          <div class="d-flex justify-content-end">
+            <a class="text-dark ml-3" href="{% url 'expense:update_flex' pk=expense.pk %}"><span class="fas fa-edit" aria-hidden="true"></span></a>
+            <a class="text-danger ml-3" href="{% url 'expense:delete_flex' pk=expense.pk %}"><span class="fas fa-trash"></span></a>
+          </div>
+        </td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+</tbody>
+{% endfor %}

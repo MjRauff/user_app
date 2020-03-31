@@ -1,0 +1,45 @@
+<div class="full-fill">
+  <div class="category-income text-white d-flex justify-content-between p-2">
+    <h3 class="pl-2 align-self-center">Income</h3>
+    <h4 class="text-white align-self-center pr-2">£{{income_summary}}</h4>
+  </div>
+  <table class="table category-income text-white shadow p-3 rounded full-fill">
+    <div class="">
+      {% include "_income_include.html" %}
+    </div>
+  </table>
+
+  <div class="category-expense text-white d-flex justify-content-between p-2">
+    <div class="d-flex justify-content-between">
+      <h3 class="pl-2 align-self-center">Expenses</h3>
+      <a class="pl-2 align-self-center text-white" href="{% url 'expense:category-create' %}"><span class="fas fa-plus ml-1"></span></a>
+    </div>
+    {% if expense_total == None %}
+    <h4 class="align-self-center pr-2">£0</h4>
+    {% else %}
+    <h4 class="text-white align-self-center pr-2">£-{{expense_total}}</h4>
+    {% endif %}
+  </div>
+  <table class="table category-expense text-white shadow p-3 rounded full-fill">
+    <div class="">
+      {% include "_expense_include.html" %}
+    </div>
+  </table>
+
+  <div class="category-expense_flex text-white d-flex justify-content-between p-2">
+    <div class="d-flex justify-content-between">
+      <h3 class="pl-2 align-self-center">Budget</h3>
+      <a class="pl-2 align-self-center text-white" href="{% url 'expense:category-create_flex' %}"><span class="fas fa-plus ml-1"></span></a>
+    </div>
+    {% if expense_total == None %}
+    <h4 class="align-self-center pr-2">£0</h4>
+    {% else %}
+    <h4 class="text-white align-self-center pr-2"></h4>
+    {% endif %}
+  </div>
+  <table class="table category-expense_flex text-white shadow p-3 rounded full-fill">
+    <div class="">
+      {% include "_expense_flex_include.html" %}
+    </div>
+  </table>
+</div>

@@ -1,0 +1,80 @@
+<div id="summary" class="text-dark col-lg-12 col-md-6">
+  <div id="summary_in" class="">
+    <div id="sum" class="bg-white shadow rounded p-2">
+      {% include "_piechart_expense.html" %}
+      <div class="d-flex justify-content-between mt-2">
+        <p>Income:</p>
+        {% if income_total == None %}
+        <p>£0</p>
+        {% else %}
+        <p>£{{income_total}}</p>
+        {% endif %}
+      </div>
+      <div class="d-flex justify-content-between">
+        <p>Expence:</p>
+        {% if expense_total == None %}
+        <p>£0</p>
+        {% else %}
+        <p class="text-danger">£-{{expense_total}}</p>
+        {% endif %}
+      </div>
+      {% if summary >= 0 %}
+      <p>£{{summary}}</p>
+      {% else %}
+      <p class="text-danger">£{{summary}}</p>
+      {% endif %}
+
+      {% if summary >= 0 %}
+      <div class="bg-success text-white p-3 shadow rounded">
+        <p class="text-left"><span class="fas fa-check mr-2"></span> You have £{{summary}} left after your expense.</p>
+      </div>
+      {% else %}
+      <div class="bg-danger text-white p-3 shadow rounded">
+        <p class="text-left"><span class="fas fa-exclamation-triangle mr-1"></span> Your expenses are more then your income your losing £{{summary}}</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
+
+<div id="summary" class="text-dark col-lg-12 col-md-6">
+  <div id="summary_in" class="">
+    <div id="sum" class="bg-white shadow rounded p-2">
+      {% include "_piechart_budget.html" %}
+      <div class="d-flex justify-content-between">
+        <p>Amount left:</p>
+        {% if income_total == None %}
+        <p>£0</p>
+        {% else %}
+        <p>£{{summary}}</p>
+        {% endif %}
+      </div>
+      <div class="d-flex justify-content-between">
+        <p>Budget for flex:</p>
+        {% if expense_total == None %}
+        <p>£0</p>
+        {% else %}
+        <p class="text-danger">£-{{budget}}</p>
+        {% endif %}
+      </div>
+      {% if saving >= 0 %}
+      <p class="text-success">£{{saving}}</p>
+      {% else %}
+      <p class="text-danger">£{{saving}}</p>
+      {% endif %}
+
+      {% if saving >= 0 %}
+      <div class="bg-success text-white p-3 shadow rounded">
+        <p class="text-left"><span class="fas fa-check mr-2"></span>SUCCESS! If you follow your budget you will save £{{saving}} / month</p>
+      </div>
+      {% else %}
+      <div class="bg-danger text-white p-3 shadow rounded">
+        <p class="text-left"><span class="fas fa-exclamation-triangle mr-2"></span>WARNING! Your budget is over your income! £{{saving}} / month</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

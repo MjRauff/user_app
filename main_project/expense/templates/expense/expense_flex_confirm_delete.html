@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+
+{% block contant %}
+<div class="jumbotron">
+  <div class="container">
+    <h1>Are you sure you want to delete <strong class="text-danger">{{expense_flex.title}}</strong>?</h1>
+    <form method="POST">
+    	{% csrf_token %}
+    	<input type="submit" value="Confirm Delete" class="btn btn-danger btn-large">
+    	<a href="{% url 'home' %}" class="btn btn-light btn-large">Cancel</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

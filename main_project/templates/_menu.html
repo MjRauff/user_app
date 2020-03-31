@@ -1,0 +1,58 @@
+<div class="">
+  <div class="p-2">
+
+    <div class="bg-dark p-2">
+      <p class="text-white text-center mt-1"><strong>Data Entry</strong></p>
+      <div class="dropdown mb-1">
+        <button class="w-100 btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Income
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item d-flex flex-row bd-highlight" href="{% url 'income:create' %}">Add Income</a>
+          <a class="dropdown-item d-flex flex-row bd-highlight" href="{% url 'income:create_flex' %}">Add Income Flex</a>
+        </div>
+      </div>
+
+      <div class="dropdown mb-1">
+        <button class="w-100 btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Expense
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item d-flex flex-row bd-highlight" href="{% url 'expense:category-create' %}">Add category</a>
+          <div class="dropdown-divider"></div>
+          {% for category in categoies %}
+          <div class="">
+            <a class="dropdown-item d-flex flex-row bd-highlight d-flex justify-content-between" href="{% url 'expense:create' pk=category.pk %}">Add {{category.category}}<span class="badge badge-primary ml-2">{{category.count}}</span></a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="dropdown mb-1">
+        <button class="w-100 btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Budget
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item d-flex flex-row bd-highlight" href="{% url 'expense:category-create_flex' %}">Add category</a>
+          <div class="dropdown-divider"></div>
+          {% for category in categoies_flex %}
+          <div class="">
+            <a class="dropdown-item d-flex flex-row bd-highlight d-flex justify-content-between" href="{% url 'expense:create_flex' pk=category.pk %}">Add {{category.category}}<span class="badge badge-primary ml-2">{{category.count}}</span></a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <a class="btn btn-sm btn-primary w-100 mb-2" href="{% url 'm3' %}"><span class="fas fa-chart-line mr-1"></span>3 Months</a>
+      <a class="btn btn-sm btn-primary w-100 mb-2" href="{% url 'm6' %}"><span class="fas fa-chart-line mr-1"></span>6 Months</a>
+      <a class="btn btn-sm btn-primary w-100 mb-2" href="{% url 'm6' %}"><span class="fas fa-chart-line mr-1"></span>9 Months</a>
+    </div>
+
+    <div class="mt-3">
+      {% include "_onclick.html" %}
+    </div>
+
+  </div>
+</div>

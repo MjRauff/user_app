@@ -1,0 +1,35 @@
+<!-- expense_housing -->
+<div class="">
+  {% for category in categoies %}
+  <thead>
+    <tr>
+      <th scope="col">
+        <div class="">
+          {{category.category}}
+          <a class="text-white" href="{% url 'expense:create' pk=category.pk %}"><span class="fas fa-plus-square ml-1"></span></a>
+        </div>
+      </th>
+      <th class="text-white" scope="col"><div class="d-flex justify-content-end">£{{category.amount_total}}</div></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for expense in expenses %}
+      {% if expense.category == category %}
+        <tr class="table-cell text-dark">
+          <td>
+            <a class="text-dark" href="#">{{expense.title}}</a>
+          </td>
+          <td class="d-flex justify-content-end">£{{expense.amount}}</td>
+          <td>
+            <div class="d-flex justify-content-end">
+              <a class="text-dark ml-3" href="{% url 'expense:update' pk=expense.pk %}"><span class="fas fa-edit" aria-hidden="true"></span></a>
+              <a class="text-danger ml-3" href="{% url 'expense:delete' pk=expense.pk %}"><span class="fas fa-trash"></span></a>
+            </div>
+          </td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+  </tbody>
+  {% endfor %}
+</div>

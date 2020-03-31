@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block contant %}
+<div>
+  <div class="jumbotron bg-secondery text-dark shadow">
+    <div class="container">
+      <div class="mb-3">
+        <a class="btn btn-primary pl-5 pr-5" href="{% url 'expense:sub_create' pk=expense.pk %}">+ Add Input</a>
+      </div>
+      <table class="table">
+        <thead>
+          <tr class="bg-info text-white">
+            <th scope="col">Date</th>
+            <th scope="col">Title</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in list %}
+          <tr>
+            <th scope="row">{{item.date_created}}</th>
+            <td>{{item.title}}</td>
+            <td>£{{item.amount}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

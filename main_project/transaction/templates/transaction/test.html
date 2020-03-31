@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block contant %}
+<div class="jumbotron bg-white">
+  <h1>{{user}}</h1>
+  <h1>TODAY: <strong class="text-primary">{{today}}</strong></h1>
+  <h1>LAST UPDATE: <strong class="text-primary">{{last_update.last_update}}</strong></h1>
+  <h1><strong class="text-danger">{{last_update.check_for_update}}</strong> months have past</h1>
+</div>
+{% endblock %}

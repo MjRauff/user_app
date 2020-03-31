@@ -1,0 +1,56 @@
+<div class="">
+  <thead>
+    <tr>
+      <th scope="col">Income
+        <a class="text-white" href="{% url 'income:create' %}"><span class="fas fa-plus-square ml-1"></span></a>
+      </th>
+      {% if income_total == None %}
+      <th scope="col"><div class="d-flex justify-content-end">£0</div></th>
+      {% else %}
+      <th scope="col"><div class="d-flex justify-content-end">£{{income_total}}</div></th>
+      {% endif %}
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in income %}
+    <tr class="table-cell text-dark">
+      <td>{{i.title}}</td>
+      <td class="d-flex justify-content-end">£{{i.amount}}</td>
+      <td>
+        <div class="d-flex justify-content-end">
+          <a class="text-dark ml-3" href="{% url 'income:update' pk=i.pk %}"><span class="fas fa-edit" aria-hidden="true"></span></a>
+          <a class="text-danger ml-3" href="{% url 'income:delete' pk=i.pk %}"><span class="fas fa-trash"></span></a>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <thead>
+    <tr>
+      <th scope="col">Income Flex
+        <a class="text-white" href="{% url 'income:create_flex' %}"><span class="fas fa-plus-square ml-1"></span></a>
+      </th>
+      {% if income_total_flex == None %}
+      <th scope="col"><div class="d-flex justify-content-end">£0</div></th>
+      {% else %}
+      <th scope="col"><div class="d-flex justify-content-end">£{{income_total_flex}}</div></th>
+      {% endif %}
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in income_flex %}
+    <tr class="table-cell text-dark">
+      <td>{{i.title}}</td>
+      <td class="d-flex justify-content-end">£{{i.amount}}</td>
+      <td>
+        <div class="d-flex justify-content-end">
+          <a class="text-dark ml-3" href="{% url 'income:update_flex' pk=i.pk %}"><span class="fas fa-edit" aria-hidden="true"></span></a>
+          <a class="text-danger ml-3" href="{% url 'income:delete_flex' pk=i.pk %}"><span class="fas fa-trash"></span></a>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</div>

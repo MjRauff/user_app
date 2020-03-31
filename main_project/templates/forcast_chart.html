@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block contant %}
+<div class="">
+  <div class="jumbotron bg-dark">
+    {% include "_timeline_chart_view.html" %}
+    <div class="d-flex justify-content-center mt-3 mb-3">
+      <a class="btn btn-primary w-100 m-1" href="{% url 'm3' %}"><span class="fas fa-chart-line mr-2"></span>3 Months</a>
+      <a class="btn btn-primary w-100 m-1" href="{% url 'm6' %}"><span class="fas fa-chart-line mr-2"></span>6 Months</a>
+      <a class="btn btn-primary w-100 m-1" href="{% url 'm9' %}"><span class="fas fa-chart-line mr-2"></span>9 Months</a>
+    </div>
+    <div class="">
+      <table class="table table-hover bg-info">
+        <thead>
+          <tr class="text-white">
+            <th scope="col">Dates</th>
+            <th scope="col">Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Saldo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for x in chart_data %}
+          {% if x.4 >= 0 %}
+          <tr class="table-success">
+            <th scope="row">{{x.2}}/{{x.1}}/{{x.0}}</th>
+            <td>{{x.5}}</td>
+            <td class="text-success"><strong>£{{x.4}}</strong></td>
+            {% if x.3 <= 0 %}
+            <td class="text-danger">£{{x.3}}</td>
+            {% else %}
+            <td>£{{x.3}}</td>
+            {% endif %}
+          </tr>
+          {% else %}
+          <tr class="table-light">
+            <th scope="row">{{x.2}}/{{x.1}}/{{x.0}}</th>
+            <td>{{x.5}}</td>
+            <td class="text-danger">£{{x.4}}</td>
+            {% if x.3 <= 0 %}
+            <td class="text-danger">£{{x.3}}</td>
+            {% else %}
+            <td>£{{x.3}}</td>
+            {% endif %}
+          </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock%}

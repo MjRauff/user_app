@@ -1,0 +1,25 @@
+<div id="piechart2" class="m-2"></div>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      {% for category in categoies_flex %}
+      ["{{category.category}}", {{category.budget_total}},],
+      {% endfor %}
+    ]);
+
+    var options = {
+      backgroundColor: 'transparent',
+      'chartArea': {'width': '100%', 'height': '80%'},
+      'legend': {'position': 'bottom'}
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+    chart.draw(data, options);
+  }
+</script>
