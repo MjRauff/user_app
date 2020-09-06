@@ -14,7 +14,11 @@ from expense.models import Expense, Category, Expense_flex, Expense_flex_sub, Ca
 
 def budget(user):
     expenses_flex = Expense_flex.objects.filter(user=user)
-    return expenses_flex.aggregate(Sum('budget'))["budget__sum"]
+    budget = expenses_flex.aggregate(Sum('budget'))["budget__sum"]
+    if budget == None:
+        return 0
+    else:
+        return budget
 
 def add_months(sourcedate, months):
     month = sourcedate.month - 1 + months
@@ -26,7 +30,6 @@ def add_months(sourcedate, months):
 def chart_data(user, month, account):
     income = Income.objects.filter(user=user).order_by("date_payment")
     expenses = Expense.objects.filter(user=user).order_by("date_payment")
-    expenses_flex = Expense_flex.objects.filter(user=user).order_by("title")
     beta = []
     alpha = []
     dt = datetime.date.today()

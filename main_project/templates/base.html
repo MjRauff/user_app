@@ -21,7 +21,9 @@
       {% if user.is_authenticated %}
       <div class="navbar-nav pl-2">
         <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+        {% if user.is_superuser %}
         <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+        {% endif %}
         <a class="nav-link" href="{% url 'm3' %}">Forcast chart</a>
       </div>
       <div class="navbar-nav pl-2">
@@ -31,7 +33,6 @@
       {% else %}
       <div class="navbar-nav pl-2">
         <a class="navbar-brand" href="{% url 'home' %}">Home</a>
-        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
         <a class="nav-link" href="{% url 'accounts:signup' %}">Sign up</a>
       </div>
       <div class="navbar-nav pl-2">
